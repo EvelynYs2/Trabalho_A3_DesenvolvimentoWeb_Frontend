@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Conta</title>
+    <link rel="stylesheet" href="../css/homeUsuario.css">
+</head>
+<body>
+
+    <div class="floating-fruit fruit1">🍓</div>
+    <div class="floating-fruit fruit2">🍋</div>
+    <div class="floating-fruit fruit3">🥝</div>
+
+    <header>
+        <h1>Bem-vindo(a), <span id="nomeUsuario">Usuário</span> 👋</h1>
+        <button id="logoutBtn">Sair</button>
+    </header>
+
+    <section class="container">
+
+        <div class="card" onclick="irPara('receitas.html')">
+            <h2>Minhas Receitas</h2>
+            <p>Veja, organize e explore todas as suas receitas cadastradas.</p>
+        </div>
+
+        <div class="card" onclick="irPara('ingredientes.html')">
+            <h2>Ingredientes</h2>
+            <p>Gerencie os ingredientes disponíveis e receba recomendações.</p>
+        </div>
+
+        <div class="card" onclick="irPara('perfil.html')">
+            <h2>Meu Perfil</h2>
+            <p>Edite suas informações, preferências e configurações da conta.</p>
+        </div>
+
+    </section>
+
+    <script src="../js/homeUsuario.js"></script>
+</body>
+</html>

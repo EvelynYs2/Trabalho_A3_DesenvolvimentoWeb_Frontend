@@ -1,28 +1,49 @@
-// LOGIN.JS — Controle da tela de login
+// LOGIN.JS — Faz login com o backend
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("loginForm");
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
+        const senha = document.getElementById("password").value.trim();
 
-        // Validação simples no front
-        if (email === "" || password === "") {
+        if (!email || !senha) {
             alert("Preencha todos os campos.");
             return;
         }
 
-        // Aqui futuramente você vai chamar o backend REAL:
-        // fetch("http://localhost:8080/api/login")
+        try {
+            const resposta = await fetch(
+                "http://localhost:8080/Trabalho_A3_DesenvolvimentoWeb_war_exploded/usuario/cadastro",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        email: email,
+                        senha: senha
+                    })
+                }
+            );
 
-        console.log("LOGIN ->", { email, password });
+            const dados = await resposta.json();
 
-        // simulação de login
-        alert("Login realizado com sucesso!");
-        window.location.href = "home.html";
+            if (resposta.ok) {
+                alert("Login realizado com sucesso!");
+
+                // SALVA O USUÁRIO PARA USAR NA HOME
+                localStorage.setItem("usuarioLogado", JSON.stringify(dados));
+
+                // Redireciona pra home
+                window.location.href = "homeUsuario.html";
+            } else {
+                alert("Erro ao fazer login: " + (dados.erro || "Credenciais inválidas"));
+            }
+
+        } catch (erro) {
+            console.error("Erro ao conectar:", erro);
+            alert("Não foi possível conectar ao servidor.");
+        }
     });
-
 });
