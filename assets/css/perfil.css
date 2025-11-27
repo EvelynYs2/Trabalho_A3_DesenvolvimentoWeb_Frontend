@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4fff4;
+}
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+h1 {
+    text-align: center;
+    color: #0a7e36;
+    margin-bottom: 20px;
+}
+
+.perfil-box {
+    display: flex;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #00000022;
+    margin-bottom: 30px;
+    border-left: 5px solid #0bbf45;
+}
+
+.foto {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid #0bbf45;
+    margin-right: 30px;
+}
+
+.dados label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dados input {
+    display: block;
+    margin-bottom: 12px;
+    padding: 8px;
+    width: 260px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #0bbf45;
+    color: white;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #0a9239;
+}
+
+.salvar {
+    background: #0077ff;
+}
+
+.salvar:hover {
+    background: #005ecc;
+}
+
+h2 {
+    color: #0a7e36;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #00000022;
+    border-left: 5px solid #0bbf45;
+}
+
+select {
+    display: block;
+    width: 200px;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}

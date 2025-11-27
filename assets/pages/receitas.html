@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Receitas Recomendadas</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2fff5;
+        color: #1b1b1b;
+    }
+
+    header {
+        background: linear-gradient(135deg, #0bbf45, #067a2d);
+        color: white;
+        text-align: center;
+        padding: 30px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    }
+
+    h1 { 
+        margin: 0; 
+        font-size: 32px; 
+        font-weight: bold;
+    }
+
+    .box {
+        background: #ffffff;
+        width: 85%;
+        margin: 25px auto;
+        padding: 20px;
+        border-radius: 14px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        border-left: 6px solid #0bbf45;
+    }
+
+    h2 {
+        color: #067a2d;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        padding-left: 20px;
+        line-height: 1.8;
+        font-size: 16px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        margin-top: 18px;
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        transition: 0.25s;
+        border: 2px solid #b8f3c5;
+        cursor: pointer; /* Torna o card clicável */
+    }
+
+    .card:hover { 
+        transform: scale(1.03); 
+        box-shadow: 0 4px 20px rgba(0, 110, 32, 0.2);
+        border-color: #0bbf45;
+    }
+
+    .card h3 {
+        margin-top: 0;
+        color: #0bbf45;
+        font-size: 20px;
+    }
+
+    .badge {
+        display: inline-block;
+        background: #0bbf4515;
+        padding: 5px 10px;
+        border-radius: 12px;
+        color: #0bbf45;
+        margin: 3px;
+        font-size: 12px;
+        border: 1px solid #0bbf45;
+    }
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>🍽️ Receitas Recomendadas</h1>
+    <p style="font-size: 16px;">Selecionadas com base nos ingredientes da sua bancada</p>
+</header>
+
+<div class="box">
+    <h2>Ingredientes na bancada</h2>
+    <ul id="listaBancada"></ul>
+</div>
+
+<div class="box">
+    <h2>Receitas sugeridas</h2>
+    <div id="listaReceitas" class="grid"></div>
+</div>
+
+<script>
+// ================= INGREDIENTES DA BANCADA =================
+
+// tenta puxar do localStorage — se não tiver, coloca alguns ingredientes padrão
+let bancada = JSON.parse(localStorage.getItem("ingredientes")) || [
+    "farinha", "açúcar", "ovos", "manteiga"
+];
+
+document.getElementById("listaBancada").innerHTML =
+    bancada.map(i => `<li>${i}</li>`).join("");
+
+
+// ================= BANCO FIXO DE RECEITAS =================
+const receitas = [
+    {
+        nome: "Cheesecake de Forno",
+        ingredientes: [
+            "bolacha maizena", "manteiga", "cream cheese",
+            "açúcar", "ovos", "baunilha", "geleia de morango"
+        ],
+        url: "../pages/cheesecake.html"  // Link para a página do cheesecake
+    },
+    {
+        nome: "Lasanha à Bolonhesa",
+        ingredientes: [
+            "massa de lasanha", "carne moída", "cebola", "molho de tomate",
+            "presunto", "mussarela", "manteiga", "farinha", "leite", "sal", "orégano"
+        ]
+    },
+
+    // ---- VARIAÇÕES DE BOLO ----
+    {
+        nome: "Bolo Simples Caseiro",
+        ingredientes: ["farinha", "açúcar", "ovos", "manteiga", "fermento", "leite"]
+    },
+    {
+        nome: "Bolo de Chocolate",
+        ingredientes: ["farinha", "açúcar", "ovos", "manteiga", "chocolate", "fermento"]
+    },
+    {
+        nome: "Bolo de Cenoura",
+        ingredientes: ["cenoura", "farinha", "açúcar", "ovos", "manteiga", "fermento"]
+    },
+    {
+        nome: "Bolo Red Velvet",
+        ingredientes: ["farinha", "açúcar", "ovos", "manteiga", "corante vermelho", "cacau"]
+    },
+];
+
+// ================= LÓGICA DE RECOMENDAÇÃO =================
+function recomendar() {
+
+    const lista = document.getElementById("listaReceitas");
+    lista.innerHTML = "";
+
+    receitas.forEach(r => {
+
+        let matching = r.ingredientes.filter(ing =>
+            bancada.map(i => i.toLowerCase()).includes(ing.toLowerCase())
+        );
+
+        if (matching.length > 0) {
+            lista.innerHTML += `
+                <div class="card" onclick="window.location.href='${r.url || "#"}'">
+                    <h3>${r.nome}</h3>
+                    <p><b>Combina com seus ingredientes:</b></p>
+                    ${matching.map(m => `<span class="badge">${m}</span>`).join("")}
+
+                    <p style="margin-top:10px;"><b>Ingredientes da receita:</b></p>
+                    <p>${r.ingredientes.join(", ")}</p>
+                </div>
+            `;
+        }
+    });
+}
+
+recomendar();
+</script>
+
+</body>
+</html>

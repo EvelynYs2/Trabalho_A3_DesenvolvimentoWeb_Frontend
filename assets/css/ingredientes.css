@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f0fff4;
+    color: #1b5e20;
+    min-height: 100vh;
+}
+
+/* Topbar */
+.topbar {
+    background: linear-gradient(90deg, #2e7d32, #4caf50);
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.2);
+}
+.topbar h1 {
+    font-size: 26px;
+}
+.topbar button {
+    background: #1b5e20;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Container */
+.container {
+    display: flex;
+    padding: 30px;
+    gap: 30px;
+}
+
+/* Form box */
+.form-box, .list-box {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    width: 50%;
+}
+.form-box h2, .list-box h2 {
+    margin-bottom: 15px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+input, select {
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid #4caf50;
+    background: #fafffa;
+    font-size: 15px;
+}
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn-primary:hover {
+    background: #43a047;
+}
+
+/* Ingredientes */
+.ingredientes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+.item {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
+    border-left: 5px solid #4caf50;
+}
+.item strong {
+    font-size: 17px;
+    color: #1b5e20;
+}
+.item p {
+    margin-top: 5px;
+}
+.item .actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+button.edit-btn {
+    background: #1976d2;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+button.delete-btn {
+    background: #c62828;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+/* Toast */
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #43a047;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+#toast.show {
+    opacity: 1;
+}

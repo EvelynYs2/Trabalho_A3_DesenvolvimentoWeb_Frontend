@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Meu Perfil</title>
+<link rel="stylesheet" href="../css/perfil.css">
+<script defer src="../js/perfil.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>👤 Meu Perfil</h1>
+
+    <div class="perfil-box">
+        <img id="fotoPerfil" class="foto" src="../img/default-user.png">
+
+        <div class="dados">
+            <label>Nome:</label>
+            <input id="nome" type="text" disabled>
+
+            <label>Email:</label>
+            <input id="email" type="email" disabled>
+
+            <label>Telefone:</label>
+            <input id="telefone" type="text" disabled>
+
+            <button id="btnEditar">Editar</button>
+            <button id="btnSalvar" class="salvar" style="display:none;">Salvar</button>
+        </div>
+    </div>
+
+    <h2>⚙️ Preferências da Conta</h2>
+
+    <div class="box">
+        <label>Tema:</label>
+        <select id="tema">
+            <option value="claro">Claro</option>
+            <option value="escuro">Escuro</option>
+        </select>
+
+        <label>Notificações:</label>
+        <select id="notificacoes">
+            <option value="todas">Todas</option>
+            <option value="importantes">Somente Importantes</option>
+            <option value="nenhuma">Desativadas</option>
+        </select>
+
+        <label>Privacidade:</label>
+        <select id="privacidade">
+            <option value="publico">Público</option>
+            <option value="amigos">Somente Amigos</option>
+            <option value="privado">Privado</option>
+        </select>
+
+        <button id="btnSalvarPrefs">Salvar Preferências</button>
+    </div>
+
+</div>
+
+</body>
+</html>
